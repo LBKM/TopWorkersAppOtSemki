@@ -75,17 +75,6 @@ Namespace My
                 Return CType(Me("Workers_KSVConnectionString1"),String)
             End Get
         End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=""E:\ТрБД\09_2 Импорт данных в SSMS_"& _ 
-            "Файлы для импорта\Database\Workers_KSV.accdb""")>  _
-        Public ReadOnly Property Workers_KSVConnectionString2() As String
-            Get
-                Return CType(Me("Workers_KSVConnectionString2"),String)
-            End Get
-        End Property
     End Class
 End Namespace
 

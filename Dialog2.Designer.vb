@@ -195,7 +195,7 @@ Partial Class Dialog2
         Me.Name = "Dialog2"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Должность и отдел"
+        Me.Text = "Dialog2"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()

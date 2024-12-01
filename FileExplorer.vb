@@ -20,7 +20,7 @@
         Next
         FileNames = My.Computer.FileSystem.GetFiles(FolderPath, FileIO.SearchOption.SearchTopLevelOnly, "*.bmp")
         For Each FileName As String In FileNames
-            FileListBox.Items.Add(FileName)
+            FileListBox.Items.Add(FileName) 
         Next
     End Sub
 
@@ -35,30 +35,20 @@
             MessageBox.Show("Файл не найден: " & FilePath)
         End If
         Dim sNameFile As String = My.Computer.FileSystem.GetFileInfo(FilePath).Name
-        'MessageBox.Show("Имя файла: " & sNameFile)
         Dim sFolderPic As String = IO.Directory.GetCurrentDirectory & "\Picture\"
-        'MessageBox.Show("Путь к Picture: " & sFolderPic)
-        'Dim sNewFilePath As String = sFolderPic & "Дата" & sNameFile
-        'MessageBox.Show("Путь + новое имя файла: " & sNewFilePath)
         Dim sNewFilePath As String = sFolderPic & Format(DateTime.Now, "dd.MM.yyyy_HH.mm.ss") & "_" & sNameFile
-        'MessageBox.Show("Путь + новое имя файла: " & sNewFilePath)
-        'MessageBox.Show("Текущее время: " & Format(DateTime.Now, "dd.MM.yyyy_HH.mm.ss") & "_" & sNameFile)
         Try
             My.Computer.FileSystem.CopyFile(FilePath, sNewFilePath)
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Обработка исключений", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End Try
-        'ProgressBar.Visible = True
-        'ProgressBar.Value += 100
-        'If ProgressBar.Value = 100 Then
-        '    MessageBox.Show("Копирование завершено")
-        '    ProgressBar.Visible = False
-        '    ProgressBar.Value = 0
-        'End If
         Try
             Dialog1.FileNamesTextBox.Text = My.Computer.FileSystem.GetFileInfo(sNewFilePath).Name
             Dialog1.PicBoxDialog.Image = Nothing
             Dialog1.PicBoxDialog.Image = Image.FromFile(sNewFilePath)
+            Dialog3.TextBoxPhotoName.Text = My.Computer.FileSystem.GetFileInfo(sNewFilePath).Name
+            Dialog3.PictureBox1.Image = Nothing
+            Dialog3.PictureBox1.Image = Image.FromFile(sNewFilePath)
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Обработчик исключений", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End Try
@@ -70,6 +60,10 @@
     End Sub
 
     Private Sub FileListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles FileListBox.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub FileExplorer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class

@@ -30,26 +30,18 @@ Public Class Dialog1
         End If
 
         If AddOnChange = False Then
-            FormKSV.Workers_KSVTableAdapter.Insert(FIOTextBox.Text, BirthdayDateTimePicker.Value.Date, DepartmentID, PostsID, FileNamesTextBox.Text)
+            FormKSV.Workers_KSVTableAdapter.Insert(FIOTextBox.Text, BirthdayDateTimePicker.Value.Date, DepartmentID, PostsID)
         End If
         FormKSV.Workers_KSVTableAdapter.Fill(FormKSV.Workers_KSVDataSet.Workers_KSV)
         Me.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.Close()
         If AddOnChange = True Then
             Dim OldWorkerRow As DataRow = FormKSV.Workers_KSVDataSet.Workers_KSV.Select("ID='" & OldRowID.ToString & "'")(0)
-            FormKSV.Workers_KSVTableAdapter.Update(FIOTextBox.Text, BirthdayDateTimePicker.Value.Date, DepartmentID, PostsID, FileNamesTextBox.Text, OldWorkerRow(0), OldWorkerRow(1), OldWorkerRow(2), OldWorkerRow(3), OldWorkerRow(4), OldWorkerRow(5))
+            FormKSV.Workers_KSVTableAdapter.Update(FIOTextBox.Text, BirthdayDateTimePicker.Value.Date, DepartmentID, PostsID, OldWorkerRow(0), OldWorkerRow(1), OldWorkerRow(2), OldWorkerRow(3), OldWorkerRow(4))
         End If
     End Sub
     Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
         Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Close()
-    End Sub
-
-    Private Sub PicButton_Click(sender As Object, e As EventArgs) Handles PicButton.Click
-        FileExplorer.ShowDialog()
-    End Sub
-
-    Private Sub PicBoxDialog_Click(sender As Object, e As EventArgs) Handles PicBoxDialog.Click
-
     End Sub
 End Class
